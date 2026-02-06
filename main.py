@@ -2,9 +2,21 @@ import sys
 from calculator_cli import add, subtract, multiply, divide
 
 def calculate_and_print(a, b, operation_name, operation_func):
+    # Map command names to standard math symbols
+    symbols = {
+        'add': '+',
+        'subtract': '-',
+        'multiply': '*',
+        'divide': '/'
+    }
+    
+    # Get the symbol, or default to the name if something goes wrong
+    symbol = symbols.get(operation_name, operation_name)
+    
     try:
         result = operation_func(a, b)
-        print(f"The result of {a} {operation_name} {b} is equal to {result}")
+        # Prints cleaner output: 10 + 5 = 15
+        print(f"{a} {symbol} {b} = {result}")
     except ValueError as e:
         print(f"Error: {e}")
     except Exception as e:
@@ -14,6 +26,14 @@ def main():
     print("Welcome to the Interactive Calculator CLI!")
     print("Type 'exit' to quit.")
     
+    # Dictionary mapping strings to functions
+    operations = {
+        'add': add,
+        'subtract': subtract,
+        'multiply': multiply,
+        'divide': divide
+    }
+
     while True:
         command = input("\nEnter command (add, subtract, multiply, divide): ").strip().lower()
         
@@ -21,7 +41,7 @@ def main():
             print("Goodbye!")
             sys.exit()
             
-        if command not in ['add', 'subtract', 'multiply', 'divide']:
+        if command not in operations:
             print("Unknown command. Please try again.")
             continue
 
@@ -32,14 +52,7 @@ def main():
             print("Invalid input. Please enter numeric values.")
             continue
 
-        if command == 'add':
-            calculate_and_print(num1, num2, "add", add)
-        elif command == 'subtract':
-            calculate_and_print(num1, num2, "subtract", subtract)
-        elif command == 'multiply':
-            calculate_and_print(num1, num2, "multiply", multiply)
-        elif command == 'divide':
-            calculate_and_print(num1, num2, "divide", divide)
+        calculate_and_print(num1, num2, command, operations[command])
 
 if __name__ == '__main__':
     main()
