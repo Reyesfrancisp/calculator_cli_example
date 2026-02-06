@@ -25,4 +25,5 @@ jobs:
         
     - name: Test with pytest and enforce 100% coverage
       run: |
-        pytest --cov=Calculator --cov-fail-under=100 tests/
+        # We use 'python -m pytest' to ensure it finds your modules correctly
+        python -m pytest --cov=calculator_cli --cov-fail-under=100 tests/
