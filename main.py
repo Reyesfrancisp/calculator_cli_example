@@ -1,5 +1,5 @@
 import sys
-from Calculator import add, subtract, multiply, divide
+from calculator_cli import add, subtract, multiply, divide
 
 def calculate_and_print(a, b, operation_name, operation_func):
     try:
