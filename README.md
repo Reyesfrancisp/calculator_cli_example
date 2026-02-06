@@ -14,4 +14,4 @@ A command-line interface (CLI) calculator written in Python. This application al
    git clone [https://github.com/Reyesfrancisp/calculator_cli_example.git](https://github.com/Reyesfrancisp/calculator_cli_example.git)
    cd calculator_cli_example
 
-2. Output Example: ![Calculator CLI Screenshot](CLI screenshot.png)
+2. Output Example: ![Calculator CLI Screenshot](CLI_screenshot.png)
